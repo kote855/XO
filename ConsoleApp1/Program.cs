@@ -51,18 +51,14 @@
             {
                 Board board = new Board();
                 char winner;
-                byte y = 4; //костыли
-                byte x = 4;
 
                 MapDraw(board.Mape()); //отрисовка поля в начале игры
                 while (board.IsWin(out winner))
                 {
                     Console.Write("Столбец:");
-                    try { y = Convert.ToByte(Console.ReadLine()); } catch { } //игнорирование ввода если он не конвертируется
-                    //byte.TryParse(Console.ReadLine(), out byte y);
+                    byte.TryParse(Console.ReadLine(), out byte y);
                     Console.Write("Строка:");
-                    try { x = Convert.ToByte(Console.ReadLine()); } catch { }
-                    //byte.TryParse(Console.ReadLine(), out byte x);
+                    byte.TryParse(Console.ReadLine(), out byte x);
                     board.Move((byte)(x - 1), (byte)(y - 1));
                     MapDraw(board.Mape()); //отрисовка поля после хода
             }
